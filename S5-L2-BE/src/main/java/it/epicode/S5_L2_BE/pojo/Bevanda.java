@@ -3,29 +3,17 @@ package it.epicode.S5_L2_BE.pojo;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 @Entity
-public class PizzaBase {
-
+public class Bevanda {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
     private String name;
     private double price;
-    private String nutritionFacts;
     private Long kcal;
-
-    @OneToMany
-    private List<Topping> toppings = new ArrayList<>();
+    private String nutritionFacts;
 
     @ManyToOne
     private Menu menu;
-
-    public void addTopping(Topping t){
-        toppings.add(t);
-    }
 }

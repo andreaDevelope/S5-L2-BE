@@ -20,10 +20,15 @@ public class PizzaBaseServ {
     ToppingRepo tr;
 
     @Transactional
-    public void save(PizzaBase p, List<Topping> t){
-
-        tr.saveAll(t);
+    public void savePizzaAndToppings(PizzaBase p, List<Topping> t){
+        for(Topping top: t){
+            p.getToppings().add(top);
+            tr.save(top);
+        }
         pr.save(p);
     }
-
 }
+
+
+
+
